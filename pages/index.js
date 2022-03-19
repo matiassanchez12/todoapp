@@ -1,4 +1,4 @@
-import { Box, Button, Container, Fade, Collapse, Stack } from "@chakra-ui/react";
+import { Button, Fade, Stack } from "@chakra-ui/react";
 import React from "react";
 import Calendar from "react-calendar";
 import List from "../components";
@@ -17,31 +17,39 @@ function App() {
   React.useEffect(() => onChange(new Date()), []);
 
   return (
-    <Stack>
+    <Stack height="100vh" gap={6}>
       <Nav />
-      <>
-        <Container maxW="container.lg" pt={3}>
-          <Stack h="100%" gap={6}>
-            <Stack direction="row">
-              <Button w={20} onClick={() => setIsOpen(!isOpen)}>
-                <AiOutlineCalendar />
-              </Button>
-              <Button w={20}>
-                <BiTask />
-              </Button>
-            </Stack>
-            <Stack hidden={!isOpen} bg="teal.500" borderRadius={4} p={6} color="blue.700" left="35%" position="absolute" zIndex={2}>
-              <Fade in={isOpen} onBlur={() => setIsOpen(false)}>
-                <Calendar onChange={onChange} value={value} />
-              </Fade>
-            </Stack>
-            <Stack>
-              <List selectedDay={value} />
-            </Stack>
-          </Stack>
-        </Container>
-      </>
-
+      <Stack h="100%" gap={6} paddingInline={8} marginBottom={4} justifyContent="center" alignItems="center">
+        <Stack direction="row">
+          <Button w={20} onClick={() => setIsOpen(!isOpen)}>
+            <AiOutlineCalendar />
+          </Button>
+          <Button w={20}>
+            <BiTask />
+          </Button>
+        </Stack>
+        <Stack
+          hidden={!isOpen}
+          bg="teal.500"
+          alignItems="end"
+          borderRadius={4}
+          p={6}
+          color="blue.700"
+          left="35%"
+          position="absolute"
+          zIndex={2}
+        >
+          <Button w={2} variant="ghost" onClick={() => setIsOpen(!isOpen)}>
+            x
+          </Button>
+          <Fade in={isOpen}>
+            <Calendar onChange={onChange} value={value} />
+          </Fade>
+        </Stack>
+        <Stack flex={1}>
+          <List selectedDay={value} />
+        </Stack>
+      </Stack>
       <Footer />
     </Stack>
   );

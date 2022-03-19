@@ -3,14 +3,26 @@ import Item from "../Item";
 import { Stack, Button, Grid, Heading, GridItem } from "@chakra-ui/react";
 import { Droppable } from "react-beautiful-dnd";
 import { v4 as uuidv4 } from "uuid";
+import { FcCheckmark } from "react-icons/fc";
 
 function Done({ listDone, setListDone, selectedDay }) {
   return (
     <Stack flex={1} gap={2}>
-      <Heading size="md">Hecho</Heading>
+      <Stack direction="row" alignItems="center">
+        <Heading size="md">Hecho</Heading>
+        <FcCheckmark size={26} />
+      </Stack>
       <Droppable droppableId="DoneList">
         {(provided) => (
-          <Grid bg="gray.700" p={3} maxW={400} ref={provided.innerRef} {...provided.droppableProps} {...provided.dragHandleProps}>
+          <Grid
+            bg="gray.700"
+            p={3}
+            minW={300}
+            maxW={400}
+            ref={provided.innerRef}
+            {...provided.droppableProps}
+            {...provided.dragHandleProps}
+          >
             {listDone
               .filter((item) => item.day === selectedDay)
               .map((item, index) => (
