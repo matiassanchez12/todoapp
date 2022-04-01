@@ -7,22 +7,14 @@ import { FcCheckmark } from "react-icons/fc";
 
 function Done({ listDone, setListDone, selectedDay }) {
   return (
-    <Stack flex={1} gap={2}>
+    <Stack gap={2}>
       <Stack direction="row" alignItems="center">
         <Heading size="md">Hecho</Heading>
         <FcCheckmark size={26} />
       </Stack>
       <Droppable droppableId="DoneList">
         {(provided) => (
-          <Grid
-            bg="gray.700"
-            p={3}
-            minW={300}
-            maxW={400}
-            ref={provided.innerRef}
-            {...provided.droppableProps}
-            {...provided.dragHandleProps}
-          >
+          <Grid p={3} minW={318} maxW={400} ref={provided.innerRef} {...provided.droppableProps} {...provided.dragHandleProps}>
             {listDone
               .filter((item) => item.day === selectedDay)
               .map((item, index) => (
@@ -44,7 +36,7 @@ function Done({ listDone, setListDone, selectedDay }) {
                     setListDone((todos) => todos.filter((todo) => todo !== item));
                     localStorage.removeItem(item.id);
                   }}
-                  colorBg="green.500"
+                  colorBg="green.600"
                   key={index}
                   index={index}
                 />
@@ -54,7 +46,7 @@ function Done({ listDone, setListDone, selectedDay }) {
               <Button
                 w="100%"
                 variant="outline"
-                color="gray.400"
+                color="gray.200"
                 onClick={() => {
                   let newTodo = {
                     id: uuidv4(),

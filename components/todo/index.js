@@ -7,22 +7,14 @@ import { FcTodoList } from "react-icons/fc";
 
 function Todo({ listTodo, setListTodo, selectedDay }) {
   return (
-    <Stack flex={1} gap={2}>
-      <Stack direction="row" alignItems="center">
+    <Stack gap={2}>
+      <Stack direction="row" textAlign="end">
         <Heading size="md">Tareas</Heading>
         <FcTodoList size={26} />
       </Stack>
       <Droppable droppableId="TodosList">
         {(provided) => (
-          <Grid
-            bg="gray.700"
-            p={3}
-            minW={300}
-            maxW={400}
-            ref={provided.innerRef}
-            {...provided.droppableProps}
-            {...provided.dragHandleProps}
-          >
+          <Grid p={3} minW={318} maxW={400} ref={provided.innerRef} {...provided.droppableProps} {...provided.dragHandleProps}>
             {listTodo
               .filter((item) => item.day === selectedDay)
               .map((item, index) => (
@@ -44,7 +36,7 @@ function Todo({ listTodo, setListTodo, selectedDay }) {
                     setListTodo((todos) => todos.filter((todo) => todo !== item));
                     localStorage.removeItem(item.id);
                   }}
-                  colorBg="blue.500"
+                  colorBg="blue.600"
                   key={index}
                   index={index}
                 />
@@ -54,7 +46,7 @@ function Todo({ listTodo, setListTodo, selectedDay }) {
               <Button
                 w="100%"
                 variant="outline"
-                color="gray.400"
+                color="gray.200"
                 onClick={() => {
                   let newTodo = {
                     id: uuidv4(),

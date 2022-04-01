@@ -3,8 +3,8 @@ import React from "react";
 
 function Footer() {
   return (
-    <Box w="100%" paddingY={2} mt="40px !important" bg="gray.600" textAlign="center">
-      <Text>Hecho por mi </Text>
+    <Box w="100%" paddingY={2} marginTop="0px !important" bg="gray.600" textAlign="center">
+      <Text>Creado y desarrollado con 💙 por Matias Sanchez ©</Text>
     </Box>
   );
 }
