@@ -1,5 +1,5 @@
 import React from "react";
-import Item from "../Item";
+import Item from "../item/Item";
 import { Stack, Button, Grid, Heading, GridItem } from "@chakra-ui/react";
 import { Droppable } from "react-beautiful-dnd";
 import { v4 as uuidv4 } from "uuid";

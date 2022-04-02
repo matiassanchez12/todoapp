@@ -26,7 +26,7 @@ function Tabs() {
       <Stack p={4} flex={1} h="100%" alignItems="center" justifyContent="center">
         <Calendar value={value} onChange={onChange} />
       </Stack>
-      <TabsChakra p={5} variant="solid-rounded" align="center" as={Stack} flex={2} flexDirection="column" gap={10}>
+      <TabsChakra p={5} variant="solid-rounded" minH={480} align="center" display="flex" flex={2} flexDirection="column" gap={6}>
         <TabList>
           <Tab>TAREAS</Tab>
           <Tab>NOTAS DEL DIA</Tab>

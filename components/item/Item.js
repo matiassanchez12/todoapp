@@ -1,10 +1,11 @@
 import React from "react";
-import { Button, GridItem, Input, Stack, Text } from "@chakra-ui/react";
+import { Button, GridItem, Input, Stack, Text, useMediaQuery } from "@chakra-ui/react";
 import { Draggable } from "react-beautiful-dnd";
-import { FaTrashAlt } from "react-icons/fa";
+import { FaTrashAlt, FaCheck } from "react-icons/fa";
 
-function Item({ item, handleEdit, handleDelete, colorBg, index }) {
+function Item({ item, handleEdit, handleDelete, handleStateChange, colorBg, index }) {
   const [openInput, setOpenInput] = React.useState(false);
+  const [isMobile] = useMediaQuery("(max-width: 48em)");
 
   const getItemStyle = (isDragging, draggableStyle) => ({
     ...draggableStyle,
@@ -17,6 +18,7 @@ function Item({ item, handleEdit, handleDelete, colorBg, index }) {
           bg={colorBg}
           borderRadius={4}
           transition="0.3s"
+          p={1}
           mb={3}
           maxW={300}
           _hover={{ transform: "scale(1.03)" }}
@@ -31,17 +33,25 @@ function Item({ item, handleEdit, handleDelete, colorBg, index }) {
           ) : (
             <Stack
               minH="40px"
-              p={2}
               paddingInline={5}
               direction="row"
               justifyContent="space-between"
               alignItems="center"
               onDoubleClickCapture={() => setOpenInput(true)}
             >
-              <Text w={200}>{item.task}</Text>
-              <Button variant="ghost" onClick={handleDelete}>
-                <FaTrashAlt size={14} />
-              </Button>
+              <Text w={200} textAlign="start">
+                {item.task}
+              </Text>
+              <Stack>
+                {isMobile && item.state === "todo" && (
+                  <Button variant="ghost" onClick={handleStateChange}>
+                    <FaCheck size={14} />
+                  </Button>
+                )}
+                <Button variant="ghost" onClick={handleDelete}>
+                  <FaTrashAlt size={14} />
+                </Button>
+              </Stack>
             </Stack>
           )}
         </GridItem>
