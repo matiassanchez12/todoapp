@@ -10,7 +10,7 @@ import "react-calendar/dist/Calendar.css";
 
 function App() {
   return (
-    <Stack h="100%" minH="100vh" w="100%" minW="430px">
+    <Stack h="100%" minH="100vh" w="100%" minW="300px">
       <Nav />
       <Tabs />
       <Footer />
