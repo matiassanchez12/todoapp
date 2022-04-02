@@ -32,18 +32,6 @@ function Todo({ listTodo, setListTodo, selectedDay }) {
                       })
                     )
                   }
-                  handleStateChange={() =>
-                    setListTodo((todos) =>
-                      todos.map((todo) => {
-                        if (todo === item) {
-                          const newItem = { ...item, state: "done" };
-                          localStorage.setItem(item.id, JSON.stringify(newItem));
-                          return newItem;
-                        }
-                        return todo;
-                      })
-                    )
-                  }
                   handleDelete={() => {
                     setListTodo((todos) => todos.filter((todo) => todo !== item));
                     localStorage.removeItem(item.id);

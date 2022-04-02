@@ -1,11 +1,10 @@
 import React from "react";
-import { Button, GridItem, Input, Stack, Text, useMediaQuery } from "@chakra-ui/react";
+import { Button, GridItem, Input, Stack, Text } from "@chakra-ui/react";
 import { Draggable } from "react-beautiful-dnd";
 import { FaTrashAlt, FaCheck } from "react-icons/fa";
 
-function Item({ item, handleEdit, handleDelete, handleStateChange, colorBg, index }) {
+function Item({ item, handleEdit, handleDelete, colorBg, index }) {
   const [openInput, setOpenInput] = React.useState(false);
-  const [isMobile] = useMediaQuery("(max-width: 48em)");
 
   const getItemStyle = (isDragging, draggableStyle) => ({
     ...draggableStyle,
@@ -43,11 +42,6 @@ function Item({ item, handleEdit, handleDelete, handleStateChange, colorBg, inde
                 {item.task}
               </Text>
               <Stack>
-                {isMobile && item.state === "todo" && (
-                  <Button variant="ghost" onClick={handleStateChange}>
-                    <FaCheck size={14} />
-                  </Button>
-                )}
                 <Button variant="ghost" onClick={handleDelete}>
                   <FaTrashAlt size={14} />
                 </Button>
