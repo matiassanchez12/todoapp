@@ -35,7 +35,7 @@ function DailyNotes({ selectedDay, listCards, setListCards }) {
 
   return (
     <Box maxW="100%" h="100%">
-      <Grid templateColumns="repeat(auto-fit, 200px)" justifyContent="center" rowGap={6} columnGap={6}>
+      <Grid templateColumns="repeat(auto-fit, 200px)" justifyContent={{ base: "center", md: "start" }} rowGap={6} columnGap={6}>
         {listCards.length > 0 &&
           listCards
             .filter((card) => card.day === selectedDay.toLocaleString().split(",")[0] && card.type === "day")

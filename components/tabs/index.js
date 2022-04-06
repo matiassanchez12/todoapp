@@ -12,17 +12,8 @@ function Tabs() {
   React.useEffect(() => onChange(new Date()), []);
 
   return (
-    <Box w="100%" marginTop="0px !important">
-      <Stack
-        bg="blue.800"
-        flexFlow="row wrap"
-        flexDirection="row"
-        justifyContent="center"
-        gap={4}
-        flex={1}
-        alignItems="start"
-        w="100%"
-      >
+    <Box w="100%" flex={1} marginTop="0px !important" bg="blue.800">
+      <Stack flexFlow="row wrap" flexDirection="row" justifyContent="center" gap={4} alignItems="start" w="100%">
         <Stack p={4} flex={1} w="100%" h="100%" alignItems="center" justifyContent="center">
           <Calendar value={value} onChange={onChange} />
         </Stack>

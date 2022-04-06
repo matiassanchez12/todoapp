@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, GridItem, Input, Stack, Text } from "@chakra-ui/react";
+import { Box, Button, GridItem, Input, Stack, Text } from "@chakra-ui/react";
 import { Draggable } from "react-beautiful-dnd";
 import { FaTrashAlt, FaCheck } from "react-icons/fa";
 
@@ -28,24 +28,32 @@ function Item({ item, handleEdit, handleDelete, colorBg, index }) {
           style={getItemStyle(snapshot.isDragging, provided.draggableProps.style)}
         >
           {openInput ? (
-            <Input type="text" value={item.task} onChange={handleEdit} onDoubleClickCapture={() => setOpenInput(true)} />
+            <Stack direction="row">
+              <Input
+                outline="none"
+                type="text"
+                value={item.task}
+                onChange={handleEdit}
+                onDoubleClickCapture={() => setOpenInput(true)}
+              />
+              <Button display="block" variant="ghost" onClick={() => setOpenInput(false)}>
+                <FaCheck size={14} />
+              </Button>
+            </Stack>
           ) : (
             <Stack
               minH="40px"
-              paddingInline={5}
               direction="row"
               justifyContent="space-between"
               alignItems="center"
               onDoubleClickCapture={() => setOpenInput(true)}
             >
-              <Text w={200} textAlign="start">
+              <Text paddingInline={4} w={240} textAlign="start">
                 {item.task}
               </Text>
-              <Stack>
-                <Button variant="ghost" onClick={handleDelete}>
-                  <FaTrashAlt size={14} />
-                </Button>
-              </Stack>
+              <Button variant="ghost" onClick={handleDelete}>
+                <FaTrashAlt size={14} />
+              </Button>
             </Stack>
           )}
         </GridItem>

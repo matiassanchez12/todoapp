@@ -5,7 +5,7 @@ function Nav() {
   return (
     <Box w="100%" bg="gray.600">
       <Stack p={3}>
-        <Heading size="md">Programar mi dia</Heading>
+        <Heading size="md">Programar mi día</Heading>
       </Stack>
     </Box>
   );
