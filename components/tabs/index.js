@@ -8,7 +8,7 @@ import DailyNotes from "../notes";
 function Tabs() {
   const [listCards, setListCards] = React.useState([]);
   const [value, onChange] = React.useState(new Date());
-  console.log("first");
+
   React.useEffect(() => onChange(new Date()), []);
 
   return (
