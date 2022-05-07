@@ -2,11 +2,14 @@ import { Html, Head, Main, NextScript } from "next/document";
 
 export default function Document() {
   const pageTitle = `Todo App`;
-  const metaImage = () => "Default image url";
+  const metaImage = () => "public/tasks.ico";
 
   return (
     <Html>
       <Head>
+        <title>Calendar Todo</title>
+        <link rel="icon" href="/tasks.ico" />
+
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
 
