@@ -5,7 +5,7 @@ import { Stack } from "@chakra-ui/react";
 import Tabs from "../components/tabs";
 import Nav from "../components/header/Nav";
 import Footer from "../components/footer";
-import { Head } from "../components/common/Head";
+import Head from "../components/common/Head";
 
 import "react-calendar/dist/Calendar.css";
 

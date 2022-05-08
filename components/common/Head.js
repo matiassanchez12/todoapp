@@ -1,11 +1,9 @@
-import NextHead from "next/head";
-import PropTypes from "prop-types";
-
-import { typesValidator } from "./validator";
-
 import React from "react";
+import NextHead from "next/head";
 
-function Head({ description = "This is a page description", type = "website" }) {
+function Head() {
+  const description = "This is a page description";
+  const type = "website";
   const pageTitle = "Calendar Todo";
   const metaImage = () => "/tasks.ico";
 
@@ -37,10 +35,5 @@ function Head({ description = "This is a page description", type = "website" }) 
     </NextHead>
   );
 }
-
-Head.propTypes = {
-  description: PropTypes.string.isRequired,
-  type: PropTypes.oneOf(typesValidator),
-};
 
 export default Head;
