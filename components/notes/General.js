@@ -13,7 +13,7 @@ function GeneralNotes({ selectedDay, listCards, setListCards }) {
         setListCards((todos) => todos.concat(item));
       }
     }
-  }, []);
+  }, [setListCards]);
 
   const handleAdd = () => {
     const newItem = { id: uuidv4(), title: "Titulo", content: "", type: "general", day: selectedDay.toLocaleString().split(",")[0] };

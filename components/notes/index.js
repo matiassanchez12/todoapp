@@ -15,7 +15,7 @@ function DailyNotes({ selectedDay, listCards, setListCards }) {
         }
       }
     }
-  }, []);
+  }, [selectedDay, setListCards]);
 
   const handleAdd = () => {
     const newItem = { id: uuidv4(), title: "Titulo", content: "", type: "day", day: selectedDay.toLocaleString().split(",")[0] };

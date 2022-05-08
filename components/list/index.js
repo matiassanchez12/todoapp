@@ -10,18 +10,17 @@ function List({ selectedDay }) {
 
   useEffect(() => {
     const local = localStorage;
-    if (local)
-      for (const key in local) {
-        const item = JSON.parse(localStorage.getItem(key));
-        if (item && item.state && item.day === selectedDay.toLocaleString().split(",")[0]) {
-          if (item.state === "todo") {
-            setListTodo((todos) => todos.concat(item));
-          } else {
-            setListDone((todos) => todos.concat(item));
-          }
+    for (const key in local) {
+      const item = JSON.parse(localStorage.getItem(key));
+      if (item && item.state && item.day === selectedDay.toLocaleString().split(",")[0]) {
+        if (item.state === "todo") {
+          setListTodo((todos) => todos.concat(item));
+        } else {
+          setListDone((todos) => todos.concat(item));
         }
       }
-  }, []);
+    }
+  }, [selectedDay]);
 
   const onDragEnd = (result) => {
     const { destination, source, draggableId } = result;
