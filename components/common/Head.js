@@ -3,7 +3,9 @@ import PropTypes from "prop-types";
 
 import { typesValidator } from "./validator";
 
-export const Head = ({ description = "This is a page description", type = "website" }) => {
+import React from "react";
+
+function Head({ description = "This is a page description", type = "website" }) {
   const pageTitle = "Calendar Todo";
   const metaImage = () => "/tasks.ico";
 
@@ -34,9 +36,11 @@ export const Head = ({ description = "This is a page description", type = "websi
       <meta property="og:image:height" content="720" />
     </NextHead>
   );
-};
+}
 
 Head.propTypes = {
   description: PropTypes.string.isRequired,
   type: PropTypes.oneOf(typesValidator),
 };
+
+export default Head;
