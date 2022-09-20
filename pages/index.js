@@ -16,7 +16,7 @@ function App() {
       <Stack h="100%" minH="100vh" w="100%" minW="360px">
         <Nav />
         <Tabs />
-        <Footer />
+        {/* <Footer /> */}
       </Stack>
     </>
   );

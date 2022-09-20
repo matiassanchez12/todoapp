@@ -7,18 +7,23 @@ import { v4 as uuidv4 } from "uuid";
 function DailyNotes({ selectedDay, listCards, setListCards }) {
   React.useEffect(() => {
     const local = localStorage;
+    setListCards([]);
     for (const key in local) {
       const item = JSON.parse(localStorage.getItem(key));
-      if (item && item.type && item.day === selectedDay.toLocaleString().split(",")[0]) {
-        if (item.type === "day") {
-          setListCards((todos) => todos.concat(item));
-        }
+      if (item && item.type && item.type === "day" && item.day === selectedDay.toLocaleString().split(",")[0]) {
+        setListCards((todos) => todos.concat(item));
       }
     }
   }, [selectedDay, setListCards]);
 
   const handleAdd = () => {
-    const newItem = { id: uuidv4(), title: "Titulo", content: "", type: "day", day: selectedDay.toLocaleString().split(",")[0] };
+    const newItem = {
+      id: uuidv4(),
+      title: "Titulo",
+      content: "",
+      type: "day",
+      day: selectedDay.toLocaleString().split(",")[0],
+    };
     localStorage.setItem(newItem.id, JSON.stringify(newItem));
     setListCards((cards) => cards.concat(newItem));
   };
@@ -35,7 +40,12 @@ function DailyNotes({ selectedDay, listCards, setListCards }) {
 
   return (
     <Box maxW="100%" h="100%">
-      <Grid templateColumns="repeat(auto-fit, 200px)" justifyContent={{ base: "center", md: "start" }} rowGap={6} columnGap={6}>
+      <Grid
+        templateColumns="repeat(auto-fit, 200px)"
+        justifyContent={{ base: "center", md: "start" }}
+        rowGap={6}
+        columnGap={6}
+      >
         {listCards.length > 0 &&
           listCards
             .filter((card) => card.day === selectedDay.toLocaleString().split(",")[0] && card.type === "day")

@@ -9,8 +9,6 @@ function Tabs() {
   const [listCards, setListCards] = React.useState([]);
   const [value, onChange] = React.useState(new Date());
 
-  React.useEffect(() => onChange(new Date()), []);
-
   return (
     <Box w="100%" flex={1} marginTop="0px !important" bg="blue.800">
       <Stack flexFlow="row wrap" flexDirection="row" justifyContent="center" gap={4} alignItems="start" w="100%">

@@ -10,6 +10,8 @@ function List({ selectedDay }) {
 
   useEffect(() => {
     const local = localStorage;
+    setListDone([]);
+    setListTodo([]);
     for (const key in local) {
       const item = JSON.parse(localStorage.getItem(key));
       if (item && item.state && item.day === selectedDay.toLocaleString().split(",")[0]) {
@@ -58,8 +60,16 @@ function List({ selectedDay }) {
     process.browser && (
       <DragDropContext onDragEnd={onDragEnd}>
         <Stack direction="row" flexFlow="row wrap" justifyContent="center" gap={4}>
-          <Todo listTodo={listTodo} setListTodo={setListTodo} selectedDay={selectedDay.toLocaleString().split(",")[0]} />
-          <Done listDone={listDone} setListDone={setListDone} selectedDay={selectedDay.toLocaleString().split(",")[0]} />
+          <Todo
+            listTodo={listTodo}
+            setListTodo={setListTodo}
+            selectedDay={selectedDay.toLocaleString().split(",")[0]}
+          />
+          <Done
+            listDone={listDone}
+            setListDone={setListDone}
+            selectedDay={selectedDay.toLocaleString().split(",")[0]}
+          />
         </Stack>
       </DragDropContext>
     )
